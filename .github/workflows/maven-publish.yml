@@ -29,7 +29,10 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package --file application/pom.xml
+      run: |
+        mvn clean install
+        mvn -B compile --file application/pom.xml
+        mvn -B package --file application/pom.xml
        
     - name: Login to DockerHub
       uses: docker/login-action@v1 
