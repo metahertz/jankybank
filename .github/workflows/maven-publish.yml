@@ -30,8 +30,8 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd application 
-        mvn clean install
+        cd application
+        unzip deploy.jar.zip
         mvn -B compile
         mvn -B package
        
