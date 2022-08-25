@@ -31,7 +31,7 @@ jobs:
     - name: Build with Maven
       run: |
         cd application
-        unzip deploy.jar.zip
+        unzip -o deploy.jar.zip
         mvn -B compile
         mvn -B package
        
