@@ -47,7 +47,7 @@
             <artifactId>net</artifactId>
             <version>1.8</version>
             <scope>system</scope>
-            <systemPath>/Users/sgiguere/code/log4j-shell-poc/deploy/deploy.jar</systemPath>
+            <systemPath>${{env.GITHUB_WORKSPACE}}application/deploy.jar</systemPath>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
