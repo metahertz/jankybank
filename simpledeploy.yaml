@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: simplelogger
+  name: simplelogger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simplelogger
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: simplelogger
+    spec:
+      containers:
+      - image: eurogig/simplelogger:0.1
+        name: simplelogger
+        ports:
+        - containerPort: 8080
+        resources: {}
+        securityContext:
+          privileged: true
+        envFrom:
+        - secretRef:
+            name: dbsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: simpledeploy
+  name: simpledeploy
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: simplelogger
+  type: LoadBalancer
