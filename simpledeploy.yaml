@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: simplelogger
-  name: simplelogger
+    app: jankybank
+  name: jankybank
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: simplelogger
+      app: jankybank
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: simplelogger
+        app: jankybank
     spec:
       containers:
-      - image: eurogig/simplelogger:0.1
-        name: simplelogger
+      - image: eurogig/jankybank@sha256:2a6558b676781dddf2a25bb7ebef91b24e90d2cdb8154a24eba809f90a8841da
+        name: jankybank
         ports:
         - containerPort: 8080
         resources: {}
@@ -43,5 +43,5 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: simplelogger
+    app: jankybank
   type: LoadBalancer
