@@ -49,6 +49,7 @@ jobs:
       with:
         # Path to the Dockerfile
         dockerfile: Dockerfile
+        registry: docker.io
         # List of tags
         image: eurogig/jankybank
         tags: latest, ${{ steps.get-latest-tag.outputs.tag }}
