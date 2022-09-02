@@ -38,10 +38,10 @@ metadata:
   name: simpledeploy
 spec:
   ports:
-  - name: "8080"
-    port: 8080
+  - name: "38080"
+    port: 38080
     protocol: TCP
     targetPort: 8080
   selector:
     app: jankybank
-  type: LoadBalancer
+  type: NodePort
