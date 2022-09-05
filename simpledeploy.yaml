@@ -38,8 +38,9 @@ metadata:
   name: simpledeploy
 spec:
   ports:
-  - name: "38080"
-    port: 38080
+  - name: "30080"
+    port: 30080
+    nodePort: 30080
     protocol: TCP
     targetPort: 8080
   selector:
