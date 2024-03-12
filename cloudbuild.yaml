@@ -1,0 +1,23 @@
+steps:
+  - name: bridgecrew/checkov
+    args:
+      - '--repo-id'
+      - $PROJECT_ID/$REPO_NAME
+      - '--framework'
+      - kubernetes
+      - '-c'
+      - 'CKV_K8S_16,CKV_CVE_2021*'
+      - '-s'
+      - '-d'
+      - /workspace
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['install', '-fapplication/pom.xml']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/jankybank-dockerized', '.']
+    images: ['gcr.io/$PROJECT_ID/jankybank-dockerized']
+images:
+  - 'gcr.io/${PROJECT_ID}/jankybank-dockerized'
+options:
+  substitutionOption: ALLOW_LOOSE
+substitutions:
+  _GCR_HOST: 'gcr.io/${PROJECT_ID}'
