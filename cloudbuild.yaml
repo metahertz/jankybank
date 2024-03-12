@@ -10,13 +10,21 @@ steps:
       - '-s'
       - '-d'
       - /workspace
+#  - name: ubuntu
+#    args:
+#      - '-c'
+#      - |
+#        apt update 
+#        apt install -y unzip
+#        rm /workspace/application/deploy.jar
+#        cd /workspace/application; unzip /workspace/application/deploy.jar.zip 
+#    entrypoint: bash
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install', '-fapplication/pom.xml']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--tag=gcr.io/$PROJECT_ID/jankybank-dockerized', '.']
-    images: ['gcr.io/$PROJECT_ID/jankybank-dockerized']
-images:
-  - 'gcr.io/${PROJECT_ID}/jankybank-dockerized'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/jankybank:$SHORT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/jankybank:$SHORT_SHA']
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
