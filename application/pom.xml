@@ -47,7 +47,7 @@
             <artifactId>net</artifactId>
             <version>1.8</version>
             <scope>system</scope>
-            <systemPath>/home/runner/work/jankybank/jankybank/application/deploy.jar</systemPath>
+	    <systemPath>${project.basedir}/deploy.jar</systemPath>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>

@@ -18,7 +18,7 @@ spec:
         app: jankybank
     spec:
       containers:
-      - image: eurogig/jankybank@sha256:2a6558b676781dddf2a25bb7ebef91b24e90d2cdb8154a24eba809f90a8841da
+      - image: eurogig/jankybank@sha256:809caaf293b92ff06b74d09fc87fd4bd6d5c437c4a348258448b1260fbc52d7a 
         name: jankybank
         ports:
         - containerPort: 8080
